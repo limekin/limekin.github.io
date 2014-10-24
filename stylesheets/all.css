@@ -173,11 +173,30 @@ nav .active
 {
     margin-top:10px;
     min-height:500px;
+    padding:0px 10px;
 }
 .post-body p
 {
     margin-top:10px;
     line-height:1.8;
+}
+.post-title
+{
+    padding:0px 10px;
+}
+
+@media (max-width: 500px) {
+
+    .post-title 
+    {
+	font-size:.9em;
+    }
+    .post-body p
+    {
+	line-height:1.4;
+	font-size:.710em;
+    }
+    
 }
 .post-body h4, .post-body h3, .post-body h5, .post-body h6
 {
