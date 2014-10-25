@@ -78,6 +78,7 @@ nav a
 .active
 {
     color:#ff3434;
+    color:white;
     font-weight:bold;
 }
 
@@ -170,7 +171,7 @@ nav a
 {
     margin-right:5px;
 }
-.article-preview .meta-tags
+.meta-tags
 {
     color:#ff8500;
     margin-right:5px;
@@ -259,8 +260,20 @@ nav a
 
 .post .social-icons
 {
-    text-align:center;
+    text-align:right;
+    margin-top:20px;
+}
+.post .time
+{
+    display:block;
+    color:gray;
+    font-size:.890em;
     margin-top:10px;
+}
+.post .meta-tags
+{ 
+    display:inline;
+    margin-right:5px;
 }
 
 .section-close-dots
@@ -268,4 +281,10 @@ nav a
     text-align:center;
     font-size:4em;
     color:silver;
+    font-weight:bold;
 }
+.section-close-dots:hover
+{
+    cursor:pointer;
+}
+
