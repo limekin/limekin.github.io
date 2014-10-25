@@ -10,11 +10,12 @@ a
 {
     text-decoration:none;
     color:#00bfe7;
+    color:#ff6464;
     transition:color .3s;
 }
 a:hover
 {
-    color:black;
+    color:white;
 }
 
 
@@ -26,8 +27,8 @@ body
     
     font-family:"Open Sans", sans-serif;
 
-    background-color:white;
-    color:#373737;
+    background-color:#250000;
+    color:#bcbcbc;
 }
 p
 {
@@ -36,13 +37,12 @@ p
 h1,h2,h3,h4,h5,h6
 {
     font-family:"Roboto Condensed", sans-serif;
+    color:white;
 }
 
 #header-content
 {
-    border-bottom:1px solid white;
     display:block;
-    background-color:white;
     position:relative;
     padding:0px 20px;
 }
@@ -62,38 +62,33 @@ nav li
 {
     display:inline-block;
 }
+nav li.divider
+{
+    margin-right:15px;
+    color:gray;
+}
 nav a
 {
 
-    margin-right:25px;
-
-    font-weight:bold;
-    color:#00bfe7;
+    margin-right:15px;
     font-size:.9em;
-    letter-spacing:.8px;
-    font-family:"Roboto Condensed", sans-serif;
-
     transition:color .3s;
 }
 
-nav a:hover
+.active
 {
-    color:gray;
+    color:#ff3434;
+    font-weight:bold;
 }
 
-nav .active
-{
-    color:#007f99;
-}
 /*Preview listings*/
 
 .year-info
 {
     padding:5px;
     text-align:center;
-    margin-top:10px;
+    margin-top:5px;
     font-size:.8em;
-    box-shadow:0px 2px 3px -3px silver;
 }
 
 .article-preview-listing
@@ -108,9 +103,9 @@ nav .active
     box-sizing:border-box;
     margin-bottom:10px;
     margin-right:10px;
-    border:1px solid #f2f2f2;
     position:relative;
-    box-shadow:1px 1px 10px -8px gray;
+    box-shadow:2px 2px 9px -4px black;
+    background-color:#180000;
 
 }
 .article-preview .article-desc
@@ -119,7 +114,7 @@ nav .active
 }
 .article-preview h3
 {
-    color:#4d4d4d;
+    color:#d8d8d8;
     font-family:"Roboto Condensed", sans-serif;
 }
 .article-preview p
@@ -127,26 +122,42 @@ nav .active
     margin-top:10px;
     font-size:.950em;
 }
+
 .article-preview .read-more
 {
-    display:block;
-    text-align:right;
+    display:inline-block;
+    position:absolute;
+    right:20px;
     margin-bottom:5px;
+}
+.article-preview .read-more li, .article-preview .post-meta li
+{
+    display:inline;
 }
 .article-preview .read-more a
 {
-    color:#00bfe7;
     font-size:.8em;
 }
+.article-preview .read-more a:hover
+{
+}
+
 .article-preview .post-meta
+{
+    display:inline-block;
+    position:absolute;
+    left:20px;
+}
+
+.article-preview .post-meta-banner
 {
     display:block;
     padding:5px 10px;
     box-sizing:border-box;
     width:100%;
-
-    text-align:right;
-    background-color:#f7f7f7;
+    min-height:30px;
+    position:relative;
+    background-color:#3b0000;
 
 }
 
@@ -159,21 +170,35 @@ nav .active
 {
     margin-right:5px;
 }
+.article-preview .meta-tags
+{
+    color:#ff8500;
+    margin-right:5px;
+}
+.article-preview .divider
+{
+    margin-right:5px;
+    margin-left:5px;
+    color:gray;
+}
+/* ---------------------------------
+/* Single paged posts 
+*/ 
 
-/* Single paged posts */
 .post
 {
     max-width:800px;
     margin:0 auto;
     margin-bottom:40px;
-    border-bottom:1px solid silver;
+    box-shadow:2px 2px 9px -4px black;
+    background-color:#180000;
+    padding:20px;
 }
 
 .post-body
 {
     margin-top:10px;
     min-height:500px;
-    padding:0px 10px;
 }
 .post-body p
 {
@@ -182,25 +207,65 @@ nav .active
 }
 .post-title
 {
-    padding:0px 10px;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
 
     .post-title 
     {
 	font-size:.9em;
     }
+    .article-preview .post-meta-banner
+    {
+	position:static;
+    }
     .post-body p
     {
 	line-height:1.4;
-	font-size:.710em;
+	font-size:.840em;
+    }
+    .article-preview .post-meta 
+    {
+	position:static;
+	display:block;
+	width:100%;
+    }
+    .article-preview .post-meta li
+    {
+	display:block;
+    }
+
+    .artcile-preview .read-more
+    {
+	display:block;
+	position:static;
+    }
+    .article-preview .read-more li
+    {
+	display:block;
+    }
+    .article-preview .divider
+    {
+	display:none;
+	visibility:hidden;
     }
     
 }
 .post-body h4, .post-body h3, .post-body h5, .post-body h6
 {
     margin-top:20px;
+    color:white;
 }
 
+.post .social-icons
+{
+    text-align:center;
+    margin-top:10px;
+}
 
+.section-close-dots
+{
+    text-align:center;
+    font-size:4em;
+    color:silver;
+}
