@@ -10,12 +10,12 @@ a
 {
     text-decoration:none;
     color:#00bfe7;
-    color:#ff6464;
+    color:#00987d;
     transition:color .3s;
 }
 a:hover
 {
-    color:white;
+    color:black;
 }
 
 
@@ -27,8 +27,8 @@ body
     
     font-family:"Open Sans", sans-serif;
 
-    background-color:#250000;
-    color:#bcbcbc;
+    background-color:white;
+    color:#5a5a5a;
 }
 p
 {
@@ -37,7 +37,8 @@ p
 h1,h2,h3,h4,h5,h6
 {
     font-family:"Roboto Condensed", sans-serif;
-    color:white;
+    color:#313131;
+    font-weight:500;
 }
 
 #header-content
@@ -45,6 +46,7 @@ h1,h2,h3,h4,h5,h6
     display:block;
     position:relative;
     padding:0px 20px;
+    margin-bottom:20px;
 }
 
 /* Navbar styles */
@@ -66,6 +68,7 @@ nav li.divider
 {
     margin-right:15px;
     color:gray;
+    font-size:.7em;
 }
 nav a
 {
@@ -77,8 +80,6 @@ nav a
 
 .active
 {
-    color:#ff3434;
-    color:white;
     font-weight:bold;
 }
 
@@ -94,7 +95,6 @@ nav a
 
 .article-preview-listing
 {
-    margin-top:20px;
 }
 
 .article-preview
@@ -105,18 +105,12 @@ nav a
     margin-bottom:10px;
     margin-right:10px;
     position:relative;
-    box-shadow:2px 2px 9px -4px black;
-    background-color:#180000;
+    border:1px solid #EDEDED;
 
 }
 .article-preview .article-desc
 {
     padding:20px;
-}
-.article-preview h3
-{
-    color:#d8d8d8;
-    font-family:"Roboto Condensed", sans-serif;
 }
 .article-preview p
 {
@@ -157,8 +151,8 @@ nav a
     box-sizing:border-box;
     width:100%;
     min-height:30px;
-    position:relative;
-    background-color:#3b0000;
+    position:absolute;
+    bottom:0px;
 
 }
 
@@ -188,11 +182,10 @@ nav a
 
 .post
 {
-    max-width:800px;
+    max-width:960px;
     margin:0 auto;
     margin-bottom:40px;
-    box-shadow:2px 2px 9px -4px black;
-    background-color:#180000;
+    border:1px solid #EDEDED;
     padding:20px;
 }
 
@@ -208,6 +201,7 @@ nav a
 }
 .post-title
 {
+    font-family:"Roboto Condensed", sans-serif;
 }
 
 @media (max-width: 400px) {
@@ -255,7 +249,6 @@ nav a
 .post-body h4, .post-body h3, .post-body h5, .post-body h6
 {
     margin-top:20px;
-    color:white;
 }
 
 .post .social-icons
