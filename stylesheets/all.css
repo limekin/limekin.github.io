@@ -203,6 +203,18 @@ nav a
 {
     font-family:"Roboto Condensed", sans-serif;
 }
+.post-image
+{
+    display:block;
+    text-align:center;
+    margin:15px auto;
+}
+.post-image img
+{
+    display:inline-block;
+    height:400px;
+    width:400px;
+}
 
 @media (max-width: 400px) {
 
