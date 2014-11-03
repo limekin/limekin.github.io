@@ -1,0 +1,158 @@
+<!doctype html><html>
+  <head>
+    <meta charset='utf-8'>
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
+    <meta content='width=device-width' name='viewport'>
+    <!-- Use title if it's in the page YAML frontmatter -->
+    <title>
+      Personalizing Windows Cmd
+    </title>
+    <link href="/stylesheets/normalize.css" rel="stylesheet" type="text/css" /><link href="/stylesheets/all.css" rel="stylesheet" type="text/css" /><link href="/stylesheets/highlightjs/styles/tomorrow-night.css" rel="stylesheet" type="text/css" />
+    <script src="/javascript/all.js" type="text/javascript"></script><script src="/javascript/highlightjs/highlight.pack.js" type="text/javascript"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed' rel='stylesheet' type='text/css'>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script type="text/javascript">var switchTo5x=true;</script>
+    <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({publisher: "da599da0-834f-4051-a898-7a1fee9f76c5", doNotHash: false, doNotCopy: false, hashAddressBar: true});</script>
+  </head>
+  <body class='blog blog_2014 blog_2014_11 blog_2014_11_personalizing-windows-cmd'>
+    <div id='header-content'>
+      <nav>
+        <ul>
+          <li>
+            <a class='' href='/'>home</a>
+          </li>
+          <li class='divider'>
+            |
+          </li>
+          <li>
+            <a class='' href='/profile.html'>profile</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <div class='post'>
+      <h2 class='post-title'>
+        Personalizing Windows Cmd
+      </h2>
+      <div class='post-body'>
+        <p>
+          When on Windows the only built-in command console I can use is the cmd. Recently I have
+          been thinking about the idea of keeping a custom set of commands that be performed by
+          referencing their associated short names. And they should work every time I use the shell.
+          I also wanted something like an init file that can hold custom settings local to the
+          shell.
+        </p>
+        <p>
+          One way I thought of implementing this was by placing a set of .bats on a particular
+          directory and extending the system PATH environment variable to hold the directory. So
+          that I can reference the filenames to execute the commands placed inside them.
+        </p>
+        <p>
+          Later I read about the
+          <code class='dos'>doskey</code>
+          command I found when I checked the contents of
+          <code class='dos'>help</code>
+          and it had what I wanted. It has the options to define a macro and even take a
+          file containing a set of macro definitions. It also felt similar to the alias command
+          found on Linux shells. Then I used it to set it up with the macros I want to use
+          and it worked cool. I'm sharing the steps I used to set it up below (in case it would help
+          someone) :
+        </p>
+        <ol>
+          <li>
+            <p>
+              First decide a directory where you want to keep your cmd stuffs at. Then add it to
+              your systems PATH. I'm taking "C:\ext_cmd\" as the directory.
+            </p>
+          </li>
+          <li>
+            <p>
+              Next create a file named "init.bat" in that directory. Add whatever settings or
+              ini commands you like to use on the cmd in there. For example say that I want
+              to add custom colors, set particular local environment variables, start from my
+              home etc. And add the doskey command to use the macros.
+            </p>
+            <pre><code class='dos'>rem This is the init.bat file.&#x000A;rem Colorful cmd LOL.&#x000A;color 03&#x000A;&#x000A;rem Sets my username.&#x000A;set USERNAME=limekin&#x000A;&#x000A;rem Navigates to home directory.&#x000A;%HOMEDRIVE%&#x000A;cd %HOMEPATH%&#x000A;&#x000A;rem Adds macros from the file named macros.&#x000A;doskey /MACROFILE=C:\cmd_ext\macros&#x000A;&#x000A;rem Clears up the screen, you don't want it to be messy at start.&#x000A;cls</code></pre>
+            <p>
+              About macros in the next step.
+            </p>
+          </li>
+          <li>
+            <p>
+              Creating a file of macro definitions is damn simple, just make a file with or
+              without any extension. I'm naming it just macros (since I gave that path in init).
+              I'm going to define macros for cd(ing) to different directories, starting up
+              explorer on a particular directory. Now create macros for them like given below :
+            </p>
+            <pre><code class='dos'>rem This is the macro file.&#x000A;rem I wanna cd to the directory I work with ruby.&#x000A;cdrb=cd "E:\Closet\Scribble\Ruby"&#x000A;&#x000A;rem I wanna open up the explorer at that directory.&#x000A;exrb=C:\WINDOWS\explorer "E:\Closet\Scribble\Ruby"</code></pre>
+            <p>
+              In case you want to add more than one command in a single macro definition, you
+              can use the special variable $T to separate out commands.
+            </p>
+          </li>
+          <li>
+            <p>
+              Now the files are setup. Next thing you have to do is make a special invoke
+              on the cmd. Every time you want to launch your shell start it with
+              <code>cmd /K init</code>
+              you can use all those settings and commands in your terminal now. For more info,
+              I have used AutoHotkey to bind the keys Ctrl+B to launch the cmd with those
+              params.
+            </p>
+          </li>
+        </ol>
+        <p>
+          Now this all I know of right now. Got any better ways of doing it ? Let me know via
+          comments.
+          <img src="http://www.pic4ever.com/images/dancing1.gif" border="0" >
+        </p>
+      </div>
+      <div class='time'>
+        Posted on :
+        November 3, 2014
+      </div>
+      <div class='meta-tags'>
+        <a href="/tags/windows.html">windows</a>
+      </div>
+      <div class='meta-tags'>
+        <a href="/tags/opinions.html"> opinions</a>
+      </div>
+      <div class='meta-tags'>
+        <a href="/tags/utilities.html"> utilities</a>
+      </div>
+      <div class='meta-tags'></div>
+      <div class='social-icons'>
+        <span class='st_sharethis_large' displayText='ShareThis'></span>
+        <span class='st_facebook_large' displayText='Facebook'></span>
+        <span class='st_twitter_large' displayText='Tweet'></span>
+        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+        <span class='st_googleplus_large' displayText='Google +'></span>
+        <span class='st_email_large' displayText='Email'></span>
+      </div>
+      <br>
+      <div id='disqus_thread'></div>
+      <script type='text/javascript'>
+        <!-- * * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */ -->
+        var disqus_shortname = 'limekin'; // required: replace example with your forum shortname
+        <!-- * * * DON'T EDIT BELOW THIS LINE * * */ -->
+        (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-56027186-1', 'auto');
+        ga('send', 'pageview');
+      </script>
+    </div>
+  </body>
+</html>
